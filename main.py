@@ -1,3 +1,5 @@
+from random import randint as roll
+
 spell = {
 	"fire_ball": {
 		'name'			: "fire_ball",
@@ -44,13 +46,20 @@ class sheet_token():
 		self.spells		= []
 		self.skills		= []
 
+	def dice_roll(self, type:int, quanty):
+		
+
+		# here
+		 
+		for time in range(quanty):
+			roll(1, type)
+
 	def set_class(self, arg_class):
 		match arg_class:
 			case "mage":
 				self.char_class = "Mage"
 				self.spells.append(spell['star_rain'])
 				self.spells.append(spell['fire_ball'])
-
 				self.inventory.append(iten['base_sword'])
 
 
