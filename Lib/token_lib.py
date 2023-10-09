@@ -13,6 +13,21 @@ def creat_item(damage:int, type_damage:str):
 		'type_damage'	: str(type_damage)
 	}
 
+def dice_roll(roll:str | list[int, int]) -> list[int] | bool:
+	if "d" in roll:
+		roll = roll.split('d')
+	if type(roll) != type(["list"]):
+		print(f"argument is not a list\n{roll}")
+		return False
+	many_times = roll[0]
+	dice_type  = roll[1]
+	
+	roll_list = []
+	for time in range(many_times):
+		num = randint(1, dice_type)
+		roll_list.append(num)
+	return roll_list
+
 class sheet_token():
 	def __init__(self) -> None:
 		self.char_name	= ""
@@ -38,16 +53,6 @@ class sheet_token():
 		self.inventory	= []
 		self.spells		= []
 		self.skills		= []
-
-	def dice_roll(self, type:int, quanty):
-		
-		roll_list = []
-		sums = 0
-		for time in range(quanty):
-			num = randint(1, type)
-			roll_list.append(num)
-			sums += num
-		return {"rolls": roll_list, "sum": sums}
 
 	def set_class(self, arg_class):
 		match arg_class:
